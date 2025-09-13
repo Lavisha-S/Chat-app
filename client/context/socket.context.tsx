@@ -25,7 +25,10 @@ interface Props {
 	children: React.ReactNode;
 }
 
-export const socket = io(SOCKET_URL);
+export const socket = io(SOCKET_URL, {
+	transports: ["websocket"],
+	withCredentials: true,
+});
 export const SocketContext = createContext<SocketContext>({
 	socket,
 	setUsername: () => {},
